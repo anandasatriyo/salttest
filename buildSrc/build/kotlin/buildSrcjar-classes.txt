@@ -1,0 +1,1 @@
+D:\Code\SaltTest\buildSrc\build\classes\kotlin\main\Android.class;D:\Code\SaltTest\buildSrc\build\classes\kotlin\main\BuildPlugins.class;D:\Code\SaltTest\buildSrc\build\classes\kotlin\main\Libs.class;D:\Code\SaltTest\buildSrc\build\classes\kotlin\main\TestLibs.class;D:\Code\SaltTest\buildSrc\build\classes\kotlin\main\Versions.class

@@ -1,0 +1,99 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs.kotlin"
+    id 'kotlin-android-extensions'
+}
+
+
+android {
+    compileSdkVersion Android.compileSDK
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
+        applicationId Android.applicationId
+        minSdkVersion Android.minSDK
+        targetSdkVersion Android.targetSDK
+        versionCode Android.versionCode
+        versionName Android.versionName
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org\"")
+            buildConfigField("String", "API_KEY", "\"1cf14a0434ec4f48857936dc0fbf691d\"")
+        }
+        release {
+            minifyEnabled false
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org\"")
+            buildConfigField("String", "API_KEY", "\"1cf14a0434ec4f48857936dc0fbf691d\"")
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+}
+
+dependencies {
+    implementation Libs.kotlinStdLib
+    implementation Libs.coreExt
+    implementation Libs.appCompat
+    implementation Libs.material
+    implementation Libs.constraintLayout
+    implementation Libs.fragmentKtx
+
+
+    implementation Libs.hiltAndroid
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    kapt Libs.hiltAndroidCompiler
+    implementation Libs.retrofit
+    implementation Libs.retrofitCoroutinesAdapter
+    implementation Libs.gson
+    implementation Libs.gsonConverter
+    implementation Libs.loggingInterceptor
+
+    implementation Libs.roomRunTime
+    kapt Libs.kaptRoom
+    implementation Libs.roomKtx
+    implementation Libs.navigationKtx
+    implementation Libs.navigationUi
+
+
+    implementation Libs.timeFormater
+    implementation Libs.materialFavouriteButton
+
+    implementation Libs.glide
+    kapt Libs.kaptGlide
+
+    implementation Libs.circleImage
+    implementation Libs.swipeRefresh
+    implementation Libs.timber
+
+    testImplementation TestLibs.archCoreTesting
+    testImplementation TestLibs.mockWebServer
+    testImplementation TestLibs.junit
+    androidTestImplementation TestLibs.junit
+    androidTestImplementation TestLibs.rules
+    androidTestImplementation TestLibs.espresso
+    androidTestImplementation TestLibs.espressoContrib
+
+}
+
